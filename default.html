@@ -1,0 +1,49 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>BabyJS Demo</title>
+    <style>
+        #canvas {
+            width:100%;
+            height:100%;
+        }
+    </style>
+    <script src="http://cdn.babylonjs.com/2-5/babylon.max.js"></script>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', startGame, false);
+
+        function startGame() {
+          if (BABYLON.Engine.isSupported()) {
+              canvas = document.getElementById("canvas");
+              engine = new BABYLON.Engine(canvas, true);
+                BABYLON.SceneLoader.Load("Espilit/", "ESpilit.babylon", engine, function (loadedScene) {
+                  scene = loadedScene;
+
+                  // create collistion detection
+                  scene.collisionsEnabled = true;
+                  scene.activeCamera.checkCollisions = true;
+
+
+                  // Wait for textures and shaders to be ready
+                  scene.executeWhenReady(function () {
+                      // Attach camera to canvas inputs
+                      scene.activeCamera.attachControl(canvas);
+
+                      // Once the scene is loaded, just register a render loop to render it
+                      engine.runRenderLoop(function () {
+                          scene.render();
+                      });
+                  });
+              }, function (progress) {
+                  // To do: give progress feedback to user
+              });
+          }
+}
+    </script>
+  </body>
+</html>
