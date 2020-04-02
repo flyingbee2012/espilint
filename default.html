@@ -9,7 +9,7 @@
             height:100%;
         }
     </style>
-    <script src="http://cdn.babylonjs.com/2-5/babylon.max.js"></script>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
   </head>
   <body>
     <canvas id="canvas"></canvas>
@@ -21,7 +21,7 @@
           if (BABYLON.Engine.isSupported()) {
               canvas = document.getElementById("canvas");
               engine = new BABYLON.Engine(canvas, true);
-                BABYLON.SceneLoader.Load("Espilit/", "ESpilit.babylon", engine, function (loadedScene) {
+                BABYLON.SceneLoader.Load("Espilit/", "home.babylon", engine, function (loadedScene) {
                   scene = loadedScene;
 
                   // create collistion detection
